@@ -1,0 +1,661 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>redis使用场景 · redis的简单认知</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="故里">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="scenes.md/消息队列" />
+    
+    
+    <link rel="prev" href="construction.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="construction.html">
+            
+                <a href="construction.html">
+            
+                    
+                    redis数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="construction.html">
+            
+                <a href="construction.html#string">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="construction.html">
+            
+                <a href="construction.html#hash">
+            
+                    
+                    哈希
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="construction.html">
+            
+                <a href="construction.html#list">
+            
+                    
+                    列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="construction.html">
+            
+                <a href="construction.html#set">
+            
+                    
+                    集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="construction.html">
+            
+                <a href="construction.html#zset">
+            
+                    
+                    有序集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="construction.html">
+            
+                <a href="construction.html#公用方法">
+            
+                    
+                    公用方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3" data-path="scenes.html">
+            
+                <a href="scenes.html">
+            
+                    
+                    redis使用场景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="scenes.md/消息队列">
+            
+                <span>
+            
+                    
+                    消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="scenes.md/商品维度计数">
+            
+                <span>
+            
+                    
+                    商品的维度计数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="scenes.md/用户维度计数">
+            
+                <span>
+            
+                    
+                    用户维度计数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="scenes.md/存储社交关系">
+            
+                <span>
+            
+                    
+                    存储社交关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="scenes.md/缓存">
+            
+                <span>
+            
+                    
+                    缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="scenes.md/最新列表&排行榜">
+            
+                <span>
+            
+                    
+                    最新列表&排行榜
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="scenes.md/消息通知">
+            
+                <span>
+            
+                    
+                    消息通知
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="scenes.md/数据统计">
+            
+                <span>
+            
+                    
+                    数据统计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="scenes.md/防止缓存击穿">
+            
+                <span>
+            
+                    
+                    防止缓存击穿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="scenes.md/商品秒杀">
+            
+                <span>
+            
+                    
+                    商品秒杀
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >redis使用场景</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="redis&#x4F7F;&#x7528;&#x573A;&#x666F;">REDIS&#x4F7F;&#x7528;&#x573A;&#x666F;</h1>
+<h2 id="&#x6D88;&#x606F;&#x961F;&#x5217;">&#x6D88;&#x606F;&#x961F;&#x5217;</h2>
+<pre><code>&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E00;&#x822C;&#x662F;&#x4E3A;&#x4E86;&#x5427;&#x77AC;&#x95F4;&#x7684;&#x670D;&#x52A1;&#x5668;&#x8BF7;&#x6C42;&#x8F6C;&#x4E3A;&#x5F02;&#x6B65;&#x5904;&#x7406;&#x3002;&#x7F13;&#x89E3;&#x670D;&#x52A1;&#x5668;&#x7684;&#x538B;&#x529B;&#x3002;
+
+&#x4E5F;&#x5B9E;&#x73B0;&#x4E86;&#x5E94;&#x7528;&#x7684;&#x89E3;&#x8026;&#x3002;&#x8BA9;&#x4E0D;&#x540C;&#x7684;&#x529F;&#x80FD;&#x4E13;&#x5FC3;&#x505A;&#x4E00;&#x4E2A;&#x4E8B;&#x60C5;&#x3002;
+
+&#x961F;&#x5217;&#x5F53;&#x7136;&#x4E5F;&#x5B9E;&#x73B0;&#x4E86;&#x987A;&#x5E8F;&#x7684;&#x83B7;&#x53D6;&#x529F;&#x80FD;&#x3002;
+
+&#x8FD8;&#x6709;&#x91CD;&#x8981;&#x7684;&#x6D41;&#x91CF;&#x524A;&#x5CF0;&#x529F;&#x80FD;&#x3002;&#x8FD0;&#x7528;list&#x7C7B;&#x578B;&#x3002;
+
+&#x4E00;&#x822C;&#x5B9E;&#x73B0;&#x6B65;&#x9AA4;&#xFF1A;
+
+1-&#x961F;&#x5217;&#xFF1A;rpush&#xFF08;&#x4ECE;&#x53F3;&#x8FB9;&#x63D2;&#x5165;&#xFF09;.lpop&#xFF08;&#x4ECE;&#x5DE6;&#x8FB9;&#x51FA;&#x961F;&#xFF09;
+2-&#x5EFA;&#x7ACB;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x5165;&#x961F;
+3-&#x5EFA;&#x7ACB;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;&#x51FA;&#x961F;
+</code></pre><h2 id="&#x5546;&#x54C1;&#x7EF4;&#x5EA6;&#x8BA1;&#x6570;">&#x5546;&#x54C1;&#x7EF4;&#x5EA6;&#x8BA1;&#x6570;</h2>
+<pre><code>&#x5BF9;&#x5546;&#x54C1;&#x7684;&#x559C;&#x6B22;&#x6570;&#xFF0C;&#x8BC4;&#x8BBA;&#x6570;&#xFF0C;&#x6D4F;&#x89C8;&#x6570;&#x7B49;&#x8BA1;&#x6570;&#x3002;
+
+&#x8FD0;&#x7528;redis&#x7684;hash&#x7C7B;&#x578B;&#x5373;&#x53EF;&#x3002;
+
+#id123&#x7684;&#x5546;&#x54C1;&#xFF0C;&#x559C;&#x6B22;&#x6B21;&#x6570;&#x6709;5&#x6B21;&#xFF1A;
+#$redis-&gt;hset(&apos;product:123&apos;,&apos;like_num&apos;,5);
+
+#id123&#x5546;&#x54C1;&#x7684;&#x559C;&#x6B22;&#x6570;&#x52A0;1&#xFF1A;
+$redis-&gt;hIncBy(&apos;product:123&apos;,&apos;like_num&apos;,1);
+
+#id123&#x5546;&#x54C1;&#x7684;&#x8BC4;&#x8BBA;&#x6570;&#x6709;10&#x4E2A;&#xFF1A;
+$redis-&gt;hset(&apos;product:123&apos;,&apos;comments&apos;,10);
+
+#&#x83B7;&#x53D6;id123&#x5546;&#x54C1;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF1A;
+$redis-&gt;hGetAll(&apos;product:123&apos;);
+
+#&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x3002;&#x5305;&#x542B;&#x559C;&#x6B22;&#x8BC4;&#x8BBA;&#x7B49;&#x3002;
+</code></pre><h2 id="&#x7528;&#x6237;&#x7EF4;&#x5EA6;&#x8BA1;&#x6570;">&#x7528;&#x6237;&#x7EF4;&#x5EA6;&#x8BA1;&#x6570;</h2>
+<pre><code>&#x5BF9;&#x7528;&#x6237;&#x52A8;&#x6001;&#x5173;&#x6CE8;&#x7C89;&#x4E1D;&#x7B49;&#x7B49;&#x8BA1;&#x6570;&#x3002;
+
+&#x4E5F;&#x662F;&#x8FD0;&#x7528;hash&#x7C7B;&#x578B;&#x3002;&#x683C;&#x5F0F;&#x548C;&#x5546;&#x54C1;&#x7EF4;&#x5EA6;&#x5DEE;&#x4E0D;&#x591A;&#x3002;
+</code></pre><h2 id="&#x5B58;&#x50A8;&#x793E;&#x4EA4;&#x5173;&#x7CFB;">&#x5B58;&#x50A8;&#x793E;&#x4EA4;&#x5173;&#x7CFB;</h2>
+<pre><code>&#x793E;&#x4EA4;&#x5173;&#x7CFB;&#x662F;&#x4E92;&#x76F8;&#x4EA4;&#x53C9;&#x7684;&#x3002;
+
+&#x53EF;&#x4EE5;&#x7528;zset&#x7C7B;&#x578B;&#x6C42;&#x4EA4;&#x96C6;&#x3002;&#x540C;&#x65F6;&#x8FD8;&#x652F;&#x6301;&#x6392;&#x5E8F;&#x3002;
+
+$redis-&gt;zAdd();
+
+$redis-&gt;zInter(&#x65B0;&#x4EA4;&#x96C6;,array(&#x4EA4;&#x96C6;1&#xFF0C;&#x4EA4;&#x96C6;2));
+
+#&#x83B7;&#x53D6;&#x5168;&#x90E8;&#x7684;&#x96C6;&#x5408;&#xFF1A;
+
+$redis-&gt;zRange();
+</code></pre><h2 id="&#x7F13;&#x5B58;">&#x7F13;&#x5B58;</h2>
+<pre><code>&#x7F13;&#x5B58;&#x7684;&#x8BDD;&#x7528;&#x5230;&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x5373;&#x53EF;&#x3002;
+
+&#x53EF;&#x4EE5;&#x4F5C;&#x7528;&#x5230;&#x5546;&#x54C1;&#x5217;&#x8868;&#xFF0C;&#x8BC4;&#x8BBA;&#x5217;&#x8868;&#xFF0C;&#x63D0;&#x793A;&#x5217;&#x8868;&#x3002;
+&#x8FD8;&#x6709;&#x671F;&#x9650;&#x7F13;&#x5B58;&#xFF1A;&#x7528;&#x5728;&#x8D2D;&#x7269;&#x8F66;&#x7B49;&#x3002;
+
+&#x4FDD;&#x7559;&#x7528;&#x6237;&#x7684;&#x8BBF;&#x95EE;&#x8BB0;&#x5F55;&#x3002;&#x4E00;&#x822C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x671F;&#x3002;
+</code></pre><h2 id="&#x6700;&#x65B0;&#x5217;&#x8868;&#x6392;&#x884C;&#x699C;">&#x6700;&#x65B0;&#x5217;&#x8868;&amp;&#x6392;&#x884C;&#x699C;</h2>
+<pre><code>&#x5229;&#x7528;redis&#x7684;zset&#x7C7B;&#x578B;&#x3002;&#x5C31;&#x80FD;&#x505A;&#x6210;&#x6700;&#x65B0;&#x5217;&#x8868;&#x3002;
+
+&#x5229;&#x7528;&#x5F55;&#x5165;&#x5546;&#x54C1;&#x7684;&#x65F6;&#x95F4;&#x6233;&#x4F5C;&#x4E3A;&#x5206;&#x6570;&#x5373;&#x53EF;&#x3002;
+</code></pre><h2 id="&#x6D88;&#x606F;&#x901A;&#x77E5;">&#x6D88;&#x606F;&#x901A;&#x77E5;</h2>
+<pre><code>&#x7528;hash&#x7ED3;&#x6784;&#x5373;&#x53EF;&#x3002;&#x8BBE;&#x7F6E;&#x672A;&#x8BFB;&#x6D88;&#x606F;&#x548C;&#x672A;&#x8BFB;&#x8BC4;&#x8BBA;&#x3002;
+
+#&#x8BBE;&#x7F6E;1&#x6761;&#x672A;&#x8BFB;&#x7CFB;&#x7EDF;&#x6D88;&#x606F;
+$redis-&gt;hSet(&apos;user:1000:message:notice&apos;, &apos;system&apos;, 1);
+
+#&#x8BBE;&#x7F6E;1&#x6761;&#x672A;&#x8BFB;&#x8BC4;&#x8BBA;
+$redis-&gt;hSet(&apos;user:1000:message:notice&apos;, &apos;comment&apos;, 1);
+
+#&#x67E5;&#x770B;&#x6240;&#x6709;&#x6D88;&#x606F;&#x901A;&#x77E5;&#x6570;&#x91CF;
+$redis-&gt;hGetAll(&apos;user:1000:message:notice&apos;);
+</code></pre><h2 id="&#x6570;&#x636E;&#x7EDF;&#x8BA1;">&#x6570;&#x636E;&#x7EDF;&#x8BA1;</h2>
+<pre><code>&#x5982;&#x7EDF;&#x8BA1;&#x6BCF;&#x6B21;&#x8BBF;&#x95EE;&#x7684;&#x72EC;&#x7ACB;ip&#x6570;&#x91CF;&#xFF1A;
+
+&#x5E94;&#x5F53;&#x4F7F;&#x7528;redis&#x7684;hyperloglog&#xFF1A;
+
+&#x8BE5;&#x7ED3;&#x6784;&#x662F;&#x53EF;&#x4EE5;&#x4F30;&#x7B97;&#x51FA;&#x5143;&#x7D20;&#x7684;&#x57FA;&#x6570;(&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x4E2A;&#x6570;)&#x3002;
+
+&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4E0D;&#x80FD;&#x8FD4;&#x56DE;&#x8F93;&#x5165;&#x7684;&#x5143;&#x7D20;&#x3002;&#x53EA;&#x80FD;&#x8FD4;&#x56DE;&#x4F30;&#x7B97;&#x503C;
+
+/*hyperloglog*/
+
+#&#x6DFB;&#x52A0;&#x5143;&#x7D20;:&#x53EA;&#x80FD;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x7528;&#x6570;&#x7EC4;&#x3002;
+#&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF1A;&#x5982;&#x679C;&#x57FA;&#x6570;&#x503C;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x5C31;&#x662F;1.&#x5426;&#x5219;0.
+$l = $redis-&gt;pfadd(&apos;alone&apos;,array(&apos;zhangsan&apos;,&apos;lisi&apos;,&apos;wangwu&apos;));
+
+#&#x8FD4;&#x56DE;&#x57FA;&#x6570;&#x4F30;&#x7B97;&#x503C;
+$l = $redis-&gt;pfcount(&apos;alone&apos;);
+
+#&#x5982;&#x679C;&#x662F;&#x591A;&#x4E2A;hyperloglog&#xFF0C;&#x4F1A;&#x5E76;&#x96C6;&#x5904;&#x7406;&#x3002;
+$l = $redis-&gt;pfadd(&apos;alone1&apos;,array(&apos;zhangsan1&apos;,&apos;lisi1&apos;,&apos;wangwu&apos;));
+#&#x5408;&#x5E76;&#x4E5F;&#x662F;&#x53EA;&#x80FD;&#x4F20;&#x5165;&#x4E24;&#x4E2A;&#x53C2;&#x6570;
+$l = $redis-&gt;pfmerge(&apos;al&apos;,array(&apos;alone&apos;,&apos;alone1&apos;));
+#&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;
+$l = $redis-&gt;pfcount(&apos;al&apos;); // int(5)
+</code></pre><h2 id="&#x9632;&#x6B62;&#x7F13;&#x5B58;&#x51FB;&#x7A7F;">&#x9632;&#x6B62;&#x7F13;&#x5B58;&#x51FB;&#x7A7F;</h2>
+<h4 id="&#x4EC0;&#x4E48;&#x662F;&#x7F13;&#x5B58;&#x51FB;&#x7A7F;">&#x4EC0;&#x4E48;&#x662F;&#x7F13;&#x5B58;&#x51FB;&#x7A7F;</h4>
+<pre><code>&#x5F53;&#x670D;&#x52A1;&#x5668;&#x8BBE;&#x7F6E;&#x4E86;&#x7F13;&#x5B58;&#x4EE5;&#x540E;&#xFF0C;
+
+&#x5982;&#x679C;&#x9ED1;&#x5BA2;&#x7528;&#x6839;&#x672C;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x6570;&#x636E;&#x53BB;&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x3002;
+
+&#x7F13;&#x5B58;&#x91CC;&#x4E00;&#x5B9A;&#x662F;&#x6CA1;&#x6709;&#x7684;&#xFF0C;&#x5C31;&#x53EA;&#x80FD;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x91CC;&#x53BB;&#x53D6;&#x3002;&#x62FF;&#x5230;&#x6570;&#x636E;&#x4EE5;&#x540E;&#x518D;&#x7F13;&#x5B58;.
+
+&#x8FD9;&#x4E9B;&#x662F;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7F13;&#x5B58;&#x3002;&#x6570;&#x636E;&#x91CF;&#x5DE8;&#x5927;&#x3002;
+
+&#x9020;&#x6210;&#x8BB8;&#x591A;&#x65E0;&#x7528;&#x7F13;&#x5B58;&#xFF0C;&#x751A;&#x81F3;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x5E93;&#x5D29;&#x6E83;&#x3002;
+</code></pre><h4 id="&#x4EC0;&#x4E48;&#x662F;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;">&#x4EC0;&#x4E48;&#x662F;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;</h4>
+<blockquote>
+<p>&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x80FD;&#x5F88;&#x8FC5;&#x901F;&#x7684;&#x5224;&#x65AD;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#x3002;
+&#x5982;&#x679C;&#x5224;&#x65AD;&#x4E0D;&#x5728;&#x96C6;&#x5408;&#x4E2D;&#x3002;
+&#x53EF;&#x4EE5;&#x63D0;&#x524D;&#x5C31;&#x8FD4;&#x56DE;&#x80FD;&#x907F;&#x514D;&#x540E;&#x9762;&#x7684;&#x6602;&#x8D35;&#x64CD;&#x4F5C;&#x3002;&#x5982;&#x8BBF;&#x95EE;db&#xFF0C;&#x6570;&#x636E;&#x5199;&#x5165;&#x7F13;&#x5B58;&#x7B49;&#x3002;
+&#x56E0;&#x6B64;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x5FC5;&#x987B;&#x8981;&#x8DB3;&#x591F;&#x7684;&#x8FC5;&#x901F;&#xFF0C;&#x540C;&#x65F6;&#x8981;&#x4FDD;&#x8BC1;&#x6D88;&#x8017;&#x4E0D;&#x9AD8;&#x3002;
+&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x91C7;&#x7528;&#x4E86;&#x6982;&#x7387;&#x578B;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+</blockquote>
+<pre><code>&#x5B9E;&#x73B0;&#x539F;&#x7406;&#xFF1A;
+
+1-&#x9996;&#x5148;&#x662F;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;bit&#x6570;&#x7EC4;&#x3002;&#x503C;&#x53EA;&#x6709;0&#x548C;1.
+2-&#x5982;&#x679C;&#x60F3;&#x6620;&#x5C04;&#x4E00;&#x4E2A;&#x503C;&#x5230;&#x5E03;&#x9686;&#x4E2D;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x5230;&#x4E0D;&#x540C;&#x7684;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x53BB;&#x751F;&#x6210;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x54C8;&#x5E0C;&#x503C;&#x3002;
+3-&#x5C06;&#x751F;&#x6210;&#x7684;&#x591A;&#x4E2A;&#x54C8;&#x5E0C;&#x503C;&#x6307;&#x5411;&#x7684;bit&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x53D8;&#x6210;1(&#x9ED8;&#x8BA4;&#x90FD;&#x662F;0)
+4-&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x503C;&#x6620;&#x5C04;&#x8FC7;&#x6765;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5F88;&#x591A;&#x4EBA;&#x4E0D;&#x540C;&#x7684;&#x4F4D;&#x7F6E;&#x7F6E;&#x4E3A;&#x4E86;1.
+5-&#x7531;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x503C;&#xFF0C;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x4E2D;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x67D0;&#x4E00;&#x4E2A;bit&#x4F4D;&#x7F6E;&#x540C;&#x65F6;&#x751F;&#x6210;&#x3002;
+6-&#x6240;&#x4EE5;&#x662F;&#x6982;&#x7387;&#x5224;&#x65AD;&#xFF1A;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x7684;&#x54C8;&#x5E0C;&#x5F97;&#x5230;&#x4E0D;&#x540C;&#x503C;&#x4EE5;&#x540E;
+7-&#x53EA;&#x8981;&#x6709;&#x4E00;&#x4E2A;&#x503C;&#x7684;bit&#x4F4D;&#x4E0D;&#x662F;1&#xFF0C;&#x90A3;&#x4E00;&#x5B9A;&#x4E0D;&#x5B58;&#x5728;&#x3002;
+8-&#x4F46;&#x8BE5;&#x503C;&#x7684;&#x5168;&#x90E8;&#x54C8;&#x5E0C;bit&#x4F4D;&#x90FD;&#x662F;1&#xFF0C;&#x5374;&#x4E0D;&#x80FD;&#x8BF4;&#x660E;&#x8BE5;&#x503C;&#x5B58;&#x5728;(&#x8FD9;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x5176;&#x4ED6;&#x5F88;&#x591A;&#x7684;&#x503C;&#x901A;&#x8FC7;&#x4E0D;&#x540C;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x751F;&#x6210;&#x4F4D;&#x7F6E;&#x66FF;&#x6362;&#x4E0A;&#x53BB;&#x7684;)
+9-&#x8FD9;&#x4E5F;&#x770B;&#x51FA;&#x3002;&#x8D8A;&#x5927;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x8D8A;&#x591A;&#x7684;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x5904;&#x7406;&#xFF0C;&#x8BEF;&#x5224;&#x7387;&#x8D8A;&#x4F4E;&#x3002;
+10-&#x7531;&#x4E8E;&#x53EF;&#x4EE5;&#x91CD;&#x53E0;&#x7684;&#x539F;&#x56E0;&#x3002;&#x5E03;&#x9686;&#x662F;&#x4E0D;&#x5141;&#x8BB8;&#x5220;&#x9664;&#x503C;&#x7684;&#x3002;
+</code></pre><h4 id="&#x4F7F;&#x7528;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;">&#x4F7F;&#x7528;&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;</h4>
+<pre><code>&#x5E03;&#x9686;&#x8FC7;&#x6EE4;&#x5668;&#x672C;&#x6765;&#x662F;&#x4F5C;&#x4E3A;redis&#x7684;&#x4E00;&#x4E2A;&#x63D2;&#x4EF6;&#x3002;
+
+&#x5B98;&#x65B9;&#x5730;&#x5740;&#xFF1A;https://github.com/RedisLabsModules/redisbloom/
+
+&#x6DFB;&#x52A0;&#x591A;&#x4E2A;ip&#x5230;ips
+bf.add ips &apos;127.0.0.1&apos;
+...
+
+&#x5224;&#x65AD;&#x67D0;ip&#x662F;&#x5426;&#x5B58;&#x5728;
+bf.exists ips &apos;11.1.2.25&apos;
+
+
+&#x4E5F;&#x53EF;&#x4EE5;&#x7528;redis&#x81EA;&#x8EAB;&#x7684;setbit&#x548C;getbit&#x5B9E;&#x73B0;&#x8FC7;&#x6EE4;&#x5668;&#x529F;&#x80FD;&#x3002;
+
+setbit&#x5BF9;&#x6307;&#x5B9A;&#x504F;&#x79FB;&#x91CF;&#x4E0A;&#x7684;&#x4F4D;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x4E3A;0&#x6216;&#x8005;1.
+
+&#x5F53;&#x5728;&#x62C9;&#x4F38;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7A7A;&#x767D;&#x7684;&#x4F4D;&#x7F6E;&#x90FD;&#x662F;0&#x6765;&#x586B;&#x5145;&#x7684;&#x3002;&#x6700;&#x5927;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x662F;2^32.
+
+bit&#x6620;&#x5C04;&#x9650;&#x5236;&#x662F;512MB.
+
+&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x7406;&#x89E3;&#x539F;&#x7406;&#x3002;&#x8FD9;&#x91CC;&#x7740;&#x91CD;&#x7F16;&#x5199;&#x81EA;&#x5DF1;&#x6784;&#x9020;&#x7684;&#x8FC7;&#x6EE4;&#x5668;&#x3002;
+</code></pre><blockquote>
+<p>&#x4EE3;&#x7801; -- </p>
+</blockquote>
+<pre><code class="lang-php">    <span class="hljs-meta">&lt;?php</span> 
+
+    $redis = <span class="hljs-keyword">new</span> \Redis();
+    $redis-&gt;connect(<span class="hljs-string">&apos;127.0.0.1&apos;</span>,<span class="hljs-number">6379</span>);
+
+    <span class="hljs-comment">#&#x51E0;&#x4E2A;&#x54C8;&#x5E0C;&#x51FD;&#x6570;&#x5904;&#x7406;&#x503C;&#x3002;&#x5F97;&#x5230;&#x51E0;&#x4E2A;&#x4F4D;&#x7F6E;10,110.</span>
+    <span class="hljs-comment">#&#x5206;&#x522B;&#x5C06;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#x8BBE;&#x7F6E;&#x4E3A;1.</span>
+    $l =$redis-&gt;setbit(<span class="hljs-string">&apos;ips&apos;</span>,<span class="hljs-number">10</span>,<span class="hljs-number">1</span>);
+    $l =$redis-&gt;setbit(<span class="hljs-string">&apos;ips&apos;</span>,<span class="hljs-number">110</span>,<span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">#&#x5224;&#x65AD;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5148;&#x54C8;&#x5E0C;&#x62FF;&#x5230;&#x4F4D;&#x7F6E;&#xFF0C;&#x6839;&#x636E;&#x4F4D;&#x7F6E;&#x67E5;&#x770B;&#x662F;&#x5426;&#x4E3A;0</span>
+    $l =$redis-&gt;getbit(<span class="hljs-string">&apos;ips&apos;</span>,<span class="hljs-number">1</span>);
+</code></pre>
+<h2 id="&#x5546;&#x54C1;&#x79D2;&#x6740;">&#x5546;&#x54C1;&#x79D2;&#x6740;</h2>
+<pre><code>redis&#x652F;&#x6301;&#x4E8B;&#x52A1;&#x3002;&#x4E00;&#x4E2A;&#x4E8B;&#x7269;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x7F13;&#x5B58;&#x3002;
+
+&#x5F53;&#x6267;&#x884C;&#x6B64;&#x4E8B;&#x52A1;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x65E0;&#x6CD5;&#x63D2;&#x5165;&#x5230;&#x672C;&#x4E8B;&#x52A1;&#x3002;
+
+&#x4E8B;&#x52A1;&#x6536;&#x5230;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x6267;&#x884C;&#x4E8B;&#x52A1;&#x5185;&#x5BB9;&#x3002;
+
+&#x4F46;&#x662F;&#x9047;&#x5230;&#x9519;&#x8BEF;&#x4E0D;&#x4F1A;&#x7EC8;&#x6B62;&#x6267;&#x884C;&#x3002;&#x5176;&#x4ED6;&#x6B63;&#x786E;&#x7684;&#x547D;&#x4EE4;&#x4F9D;&#x7136;&#x4F1A;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;
+
+&#x7531;&#x4E8E;&#x6B64;&#x7279;&#x6027;&#xFF0C;&#x5F15;&#x5165;redis&#x7684;watch&#x547D;&#x4EE4;&#x3002;
+
+&#x8BE5;&#x547D;&#x4EE4;&#x662F;&#x76D1;&#x63A7;&#x67D0;&#x4E00;&#x4E2A;&#x503C;&#x3002;&#x5982;&#x679C;&#x76D1;&#x63A7;&#x7684;&#x503C;&#x6539;&#x53D8;&#xFF0C;&#x5219;&#x4E8B;&#x52A1;&#x4F1A;&#x5931;&#x8D25;&#x3002;
+
+&#x5F88;&#x660E;&#x663E;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x4E50;&#x89C2;&#x9501;&#x7684;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x3002;
+
+&#x5C06;&#x7248;&#x672C;&#x53F7;&#x53D6;&#x51FA;&#x6765;watch&#x76D1;&#x89C6;&#x3002;
+
+&#x7136;&#x540E;&#x5F00;&#x542F;&#x4E8B;&#x52A1;&#x3002;&#x6267;&#x884C;&#x4E8B;&#x52A1;&#x3002;
+
+&#x5982;&#x679C;&#x6709;&#x5176;&#x4ED6;&#x7684;&#x4FEE;&#x6539;&#x5BFC;&#x81F4;&#x4E86;&#x7248;&#x672C;&#x53F7;&#x6539;&#x53D8;&#x3002;
+
+&#x90A3;&#x4E8B;&#x52A1;&#x4F1A;&#x4E2D;&#x65AD;&#x3002;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="construction.html#公用方法" class="navigation navigation-prev " aria-label="Previous page: 公用方法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="scenes.md/消息队列" class="navigation navigation-next " aria-label="Next page: 消息队列">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"redis使用场景","level":"1.3","depth":1,"next":{"title":"消息队列","level":"1.3.1","depth":2,"path":"lib/scenes.md/消息队列","ref":"lib/scenes.md/消息队列","articles":[]},"previous":{"title":"公用方法","level":"1.2.6","depth":2,"anchor":"#公用方法","path":"lib/construction.md","ref":"lib/construction.md#公用方法","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"故里","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"redis的简单认知","gitbook":"*","description":"故里的学习进阶之路"},"file":{"path":"lib/scenes.md","mtime":"2020-06-09T07:53:33.462Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-09T08:43:26.770Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
