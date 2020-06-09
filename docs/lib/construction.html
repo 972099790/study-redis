@@ -1,0 +1,718 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>redis数据结构 · redis的简单认知</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="故里">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="construction.html" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="construction.html">
+            
+                <a href="construction.html">
+            
+                    
+                    redis数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="construction.html">
+            
+                <a href="construction.html#string">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="construction.html">
+            
+                <a href="construction.html#hash">
+            
+                    
+                    哈希
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="construction.html">
+            
+                <a href="construction.html#list">
+            
+                    
+                    列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="construction.html">
+            
+                <a href="construction.html#set">
+            
+                    
+                    集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="construction.html">
+            
+                <a href="construction.html#zset">
+            
+                    
+                    有序集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="construction.html">
+            
+                <a href="construction.html#公用方法">
+            
+                    
+                    公用方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="scenes.html">
+            
+                <a href="scenes.html">
+            
+                    
+                    redis使用场景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="scenes.md/消息队列">
+            
+                <span>
+            
+                    
+                    消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="scenes.md/商品维度计数">
+            
+                <span>
+            
+                    
+                    商品的维度计数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="scenes.md/用户维度计数">
+            
+                <span>
+            
+                    
+                    用户维度计数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="scenes.md/存储社交关系">
+            
+                <span>
+            
+                    
+                    存储社交关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="scenes.md/缓存">
+            
+                <span>
+            
+                    
+                    缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="scenes.md/最新列表&排行榜">
+            
+                <span>
+            
+                    
+                    最新列表&排行榜
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="scenes.md/消息通知">
+            
+                <span>
+            
+                    
+                    消息通知
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="scenes.md/数据统计">
+            
+                <span>
+            
+                    
+                    数据统计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="scenes.md/防止缓存击穿">
+            
+                <span>
+            
+                    
+                    防止缓存击穿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="scenes.md/商品秒杀">
+            
+                <span>
+            
+                    
+                    商品秒杀
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >redis数据结构</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="redis&#x6570;&#x636E;&#x7ED3;&#x6784;">REDIS&#x6570;&#x636E;&#x7ED3;&#x6784;</h1>
+<p>redis&#x6709;5&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;.&#x5177;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;.</p>
+<h2 id="string">string</h2>
+<blockquote>
+<p>&#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;&#x7684;&#x505A;&#x7B80;&#x5355;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x7F13;&#x5B58;.</p>
+</blockquote>
+<pre><code class="lang-php">
+    <span class="hljs-comment">/*string&#x7C7B;&#x578B;&#xFF1A;&#x8BF4;&#x7684;&#x90FD;&#x662F;key&#x548C;&#x503C;*/</span>
+    <span class="hljs-comment">#&#x666E;&#x901A;&#x8BBE;&#x7F6E;&#x503C;</span>
+    $redis-&gt;set(<span class="hljs-string">&apos;name&apos;</span>,<span class="hljs-string">&apos;guli&apos;</span>);
+
+    <span class="hljs-comment">#&#x4E0D;&#x5B58;&#x5728;key&#x7684;&#x65F6;&#x5019;&#x8BBE;&#x7F6E;</span>
+    $l = $redis-&gt;setNX(<span class="hljs-string">&apos;name&apos;</span>,<span class="hljs-string">&apos;guli&apos;</span>); <span class="hljs-comment">// bool(false)</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x503C;</span>
+    $l = $redis-&gt;get(<span class="hljs-string">&apos;name&apos;</span>); <span class="hljs-comment">// string(7) &quot;guli&quot;</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;str&#x957F;&#x5EA6;</span>
+    $l = $redis-&gt;strlen(<span class="hljs-string">&apos;name&apos;</span>); <span class="hljs-comment">// int(7)</span>
+
+    <span class="hljs-comment">#&#x5148;&#x91CD;&#x7F6E;&#x65E7;key&#x7684;&#x503C;&#x3002;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x65E7;&#x503C;&#x3002;</span>
+    $l = $redis-&gt;getset(<span class="hljs-string">&apos;name&apos;</span>,<span class="hljs-string">&apos;wanglulu&apos;</span>); <span class="hljs-comment">// string(7) &quot;guli&quot;</span>
+
+    <span class="hljs-comment">#&#x91CD;&#x7F6E;key&#x503C;&#x518D;&#x7528;set&#x5373;&#x53EF;&#x3002;</span>
+    $l = $redis-&gt;set(<span class="hljs-string">&apos;name&apos;</span>,<span class="hljs-string">&apos;lisi&apos;</span>); <span class="hljs-comment">// bool(true)</span>
+
+    $l = $redis-&gt;set(<span class="hljs-string">&apos;age&apos;</span>,<span class="hljs-number">18</span>); <span class="hljs-comment">// &#x5C31;&#x7B97;&#x5199;&#x7684;&#x662F;&#x6574;&#x578B;&#x5B58;&#x50A8;&#x7684;&#x4E5F;&#x662F;&#x5B57;&#x7B26;&#x4E32;</span>
+
+    <span class="hljs-comment">#&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;key</span>
+    $meset = <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&apos;a&apos;</span>=&gt;<span class="hljs-string">&apos;123&apos;</span>, <span class="hljs-comment">// &#x952E;&#x503C;&#x5BF9;&#x5E94;&#x3002;</span>
+        <span class="hljs-string">&apos;b&apos;</span>=&gt;<span class="hljs-string">&apos;345&apos;</span>
+        );
+    $l = $redis-&gt;mset($meset); <span class="hljs-comment">// bool(true)</span>
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x591A;&#x4E2A;key&#x7684;&#x503C;&#x3002;&#x7ED3;&#x679C;&#x662F;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;&#x4E0D;&#x662F;&#x5173;&#x8054;&#x6570;&#x7EC4;</span>
+    $l = $redis-&gt;mget(<span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;a&apos;</span>,<span class="hljs-string">&apos;b&apos;</span>));<span class="hljs-comment">// &#x5F97;&#x5230;&#x7D22;&#x5F15;&#x6570;&#x7EC4;</span>
+
+    <span class="hljs-comment">#&#x5BF9;&#x6570;&#x503C;&#x589E;1=&gt;incr()&#x3002;&#x51CF;&#x4E00;=&#x300B;decr()&#x3002;</span>
+    <span class="hljs-comment">#&#x9700;&#x8981;&#x6CE8;&#x610F;&#x5982;&#x679C;&#x662F;&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x80FD;&#x589E;&#x51CF;&#x5219;&#x65E0;&#x6548;&#x679C;&#x3002;</span>
+    $l = $redis-&gt;incr(<span class="hljs-string">&apos;age&apos;</span>);
+    $l = $redis-&gt;get(<span class="hljs-string">&apos;age&apos;</span>); <span class="hljs-comment">// string(2) &quot;19&quot;</span>
+
+    <span class="hljs-comment">#&#x652F;&#x6301;&#x6570;&#x503C;&#x7684;&#x6307;&#x5B9A;&#x6570;&#x76EE;&#x63D0;&#x4F9B;&#x589E;&#x51CF;&#x91CF;</span>
+    $l = $redis-&gt;incrBy(<span class="hljs-string">&apos;age&apos;</span>,<span class="hljs-number">10</span>); <span class="hljs-comment">// int(29)</span>
+    $l = $redis-&gt;decrBy(<span class="hljs-string">&apos;age&apos;</span>,<span class="hljs-number">5</span>); <span class="hljs-comment">// int(24)</span>
+</code></pre>
+<h2 id="hash">hash</h2>
+<blockquote>
+<p>&#x54C8;&#x5E0C;&#x8868;&#x3002;&#x76F8;&#x5F53;&#x4E8E;&#x6570;&#x636E;&#x5E93;&#x4E00;&#x884C;&#x6216;&#x8005;&#x591A;&#x884C;&#x6570;&#x636E;&#x3002;&#x6BCF;&#x4E00;&#x884C;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x952E;&#x503C;&#x3002;
+&#x54C8;&#x5E0C;&#x7ED3;&#x6784;&#x652F;&#x6301;hIncBy()&#x3002;&#x6240;&#x4EE5;&#x54C8;&#x5E0C;&#x7ED3;&#x6784;&#x662F;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x8BA1;&#x6570;&#x4F7F;&#x7528;&#x7684;&#x3002;
+&#x4F5C;&#x4E3A;&#x6620;&#x5C04;&#x8868;&#x3002;&#x53EF;&#x4EE5;&#x6620;&#x5C04;&#x6570;&#x636E;&#x5E93;&#x4FE1;&#x606F;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x9002;&#x5408;&#x5B58;&#x50A8;&#x5BF9;&#x8C61;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-php">    <span class="hljs-comment">/*&#x54C8;&#x5E0C;&#x7C7B;&#x578B;&#xFF1A;&#x8BF4;&#x7684;&#x90FD;&#x662F;&#x54C8;&#x5E0C;&#xFF0C;&#x5B57;&#x6BB5;&#x548C;&#x503C;*/</span>
+    <span class="hljs-comment">#&#x8BBE;&#x7F6E;hash&#x8868;&#x4E2D;&#x7684;key-value</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hset(&apos;hash1&apos;,&apos;name&apos;,&apos;weipeng&apos;); // int(1)</span>
+
+    <span class="hljs-comment">#&#x4E0D;&#x5B58;&#x5728;&#x5B57;&#x6BB5;&#x624D;&#x8BBE;&#x7F6E;&#x503C;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hsetnx(&apos;hash1&apos;,&apos;name&apos;,&apos;weipeng&apos;); // </span>
+
+    <span class="hljs-comment">#&#x6279;&#x91CF;&#x8BBE;&#x7F6E;hash&#x8868;&#x7684;&#x503C;</span>
+    $hashArray = <span class="hljs-keyword">array</span>(<span class="hljs-string">&apos;ager&apos;</span>=&gt;<span class="hljs-string">&apos;18o&apos;</span>,<span class="hljs-string">&apos;team&apos;</span>=&gt;<span class="hljs-string">&apos;nanjing&apos;</span>);
+    <span class="hljs-comment">// $l = $redis-&gt;hmset(&apos;hash1&apos;,$hashArray); // bool(true)</span>
+
+    <span class="hljs-comment">#&#x67E5;&#x770B;&#x67D0;&#x54C8;&#x5E0C;&#x8868;&#x4E2D;&#x662F;&#x5426;&#x5B58;&#x5728;key</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hexists(&apos;hash1&apos;,&apos;team&apos;); // bool(true)</span>
+
+    <span class="hljs-comment">#&#x5220;&#x9664;Hash&#x8868;&#x7684;&#x5B57;&#x6BB5;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hdel(&apos;hash1&apos;,&apos;team&apos;,&apos;name&apos;);</span>
+
+    <span class="hljs-comment">#&#x67E5;&#x770B;hash&#x8868;&#x5185;&#x5BB9;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hgetAll(&apos;hash1&apos;); // &#x8FD4;&#x56DE;&#x5173;&#x8054;&#x6570;&#x7EC4;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hget(&apos;hash1&apos;,&apos;age&apos;); // string(2) &quot;18&quot;</span>
+
+    <span class="hljs-comment">#hash&#x7684;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;&#x589E;&#x91CF;</span>
+    <span class="hljs-comment">// $redis-&gt;hIncrBy(&apos;hash1&apos;,&apos;age&apos;,10);</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x54C8;&#x5E0C;&#x8868;&#x6709;&#x7684;&#x5B57;&#x6BB5;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hkeys(&apos;hash1&apos;); // &#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x54C8;&#x5E0C;&#x8868;&#x6240;&#x6709;&#x7684;&#x503C;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hvals(&apos;hash1&apos;);  // &#x4E00;&#x4E2A;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x5B57;&#x6BB5;&#x6570;&#x91CF;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hlen(&apos;hash1&apos;); // int(1)</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x54C8;&#x5E0C;&#x8868;&#x7684;&#x6307;&#x5B9A;&#x591A;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x503C;:&#x7D22;&#x5F15;&#x6570;&#x7EC4;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;hmget(&apos;hash1&apos;,array(&apos;age&apos;,&apos;team&apos;)); // string(2) &quot;28&quot;</span>
+</code></pre>
+<h2 id="list">list</h2>
+<blockquote>
+<p>list&#x66F4;&#x591A;&#x7684;&#x662F;&#x961F;&#x5217;&#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x53CA;&#x5BF9;&#x5916;&#x90E8;&#x7684;&#x5927;&#x6D41;&#x91CF;&#x6216;&#x8005;&#x662F;&#x548C;&#x5916;&#x90E8;&#x7684;&#x4E1A;&#x52A1;&#x89E3;&#x8026;&#x7B49;&#x64CD;&#x4F5C;
+&#x5E38;&#x5E38;&#x9002;&#x7528;&#x4E8E;&#x6D88;&#x606F;&#x961F;&#x5217;&#xFF0C;&#x6D41;&#x91CF;&#x6D88;&#x5CF0;&#xFF0C;&#x4ECE;&#x53F3;&#x8FB9;&#x63D2;&#x5165;&#x5DE6;&#x8FB9;&#x53D6;&#x503C;&#x7684;&#x94FE;&#x5F0F;&#x64CD;&#x4F5C;&#x3002;&#x5B9E;&#x73B0;&#x9010;&#x4E2A;&#x5904;&#x7406;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-php">    <span class="hljs-comment">/*list&#x7C7B;&#x578B;&#xFF1A;&#x8BF4;&#x7684;&#x90FD;&#x662F;&#x5217;&#x8868;&#x548C;&#x5143;&#x7D20;*/</span>
+    <span class="hljs-comment">/*list&#x53EA;&#x652F;&#x6301;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;&#x54C8;&#x5E0C;&#x53EF;&#x652F;&#x6301;&#x5173;&#x8054;&#x6570;&#x7EC4;*/</span>
+    <span class="hljs-comment">/*list&#x4E2D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5143;&#x7D20;*/</span>
+
+    <span class="hljs-comment">#&#x4ECE;&#x5DE6;&#x8FB9;&#x3001;&#x53F3;&#x8FB9;&#x63D2;&#x5165;&#x5143;&#x7D20;&#x5230;&#x5217;&#x8868;(&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5143;&#x7D20;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;lpush(&apos;list1&apos;,&apos;a&apos;);</span>
+
+    <span class="hljs-comment">#&#x4ECE;&#x5DE6;&#x8FB9;&#x3001;&#x53F3;&#x8FB9;&#x79FB;&#x9664;&#x5E76;&#x83B7;&#x53D6;&#x5217;&#x8868;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;</span>
+    <span class="hljs-comment">#&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5143;&#x7D20;&#x4F1A;&#x963B;&#x585E;&#x76F4;&#x5230;&#x8D85;&#x65F6;&#x6216;&#x8005;&#x53EF;&#x5F39;&#x51FA;&#x4E3A;&#x6B62;&#x3002;</span>
+    <span class="hljs-comment">#&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8D85;&#x65F6;&#x7684;&#x65F6;&#x5019;&#x8BBE;&#x5B9A;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;blpop(&apos;list1&apos;,2); // &#x8FD4;&#x56DE;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;array([0]=&gt;&apos;list1&apos;,[1]=&gt;&apos;a&apos;);</span>
+    <span class="hljs-comment">// $l = $redis-&gt;brpop(&apos;list1&apos;,3);</span>
+
+    <span class="hljs-comment">#&#x4ECE;&#x5DE6;&#x8FB9;&#x3001;&#x53F3;&#x8FB9;&#x79FB;&#x9664;&#x5E76;&#x83B7;&#x53D6;&#x79FB;&#x9664;&#x7684;&#x5143;&#x7D20;(&#x6CA1;&#x6709;&#x963B;&#x585E;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x8D85;&#x65F6;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;lpop(&apos;list1&apos;);</span>
+    <span class="hljs-comment">// $l = $redis-&gt;rpop(&apos;list1&apos;);</span>
+
+    <span class="hljs-comment">#&#x4E5F;&#x53EF;&#x4EE5;&#x53D6;&#x51FA;&#x6307;&#x5B9A;&#x8303;&#x56F4;&#x5143;&#x7D20;(0,-1&#x5168;&#x67E5;&#x8BE2;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;lrange(&apos;list1&apos;,0,-1); // &#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;</span>
+
+    <span class="hljs-comment">#&#x8FD8;&#x53EF;&#x4EE5;&#x79FB;&#x9664;&#x5217;&#x8868;&#x4E2D;&#x6307;&#x5B9A;&#x5143;&#x7D20;&#x4E2A;&#x6570;.</span>
+    <span class="hljs-comment">#&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x5217;&#x8868;&#x540D;</span>
+    <span class="hljs-comment">#&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8981;&#x79FB;&#x9664;&#x7684;&#x5143;&#x7D20;&#x503C;</span>
+    <span class="hljs-comment">#&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8981;&#x79FB;&#x9664;&#x7684;&#x8BE5;&#x5143;&#x7D20;&#x4E2A;&#x6570;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;lrem(&apos;list1&apos;,&apos;a&apos;,1); </span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;list&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;llen(&apos;list1&apos;); // int(4)</span>
+
+    <span class="hljs-comment">#&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x83B7;&#x53D6;&#x5230;list&#x7684;&#x5143;&#x7D20;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;lindex(&apos;list1&apos;,1); // string(1) &quot;a&quot;</span>
+
+    <span class="hljs-comment">#&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x4FEE;&#x6539;&#x5230;list&#x7684;&#x5143;&#x7D20;</span>
+    <span class="hljs-comment">#&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x7D22;&#x5F15;&#x8D85;&#x51FA;&#x8303;&#x56F4;&#x4F1A;&#x62A5;&#x9519;&#x3002;</span>
+    <span class="hljs-comment">#&#x540C;&#x65F6;&#x8BE5;&#x65B9;&#x6CD5;&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;&#x5217;&#x8868;&#x6DFB;&#x52A0;&#x5143;&#x7D20;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;lset(&apos;list1&apos;,0,&apos;ab&apos;); // bool(true)</span>
+</code></pre>
+<h3 id="set">set</h3>
+<blockquote>
+<p>set&#x96C6;&#x5408;&#x662F;&#x65E0;&#x5E8F;&#x7684;(&#x548C;sadd()&#x63D2;&#x5165;&#x7684;&#x987A;&#x5E8F;&#x65E0;&#x5173;)&#x3002;
+&#x4E4B;&#x6240;&#x4EE5;&#x53EB;&#x96C6;&#x5408;&#xFF0C;&#x5C31;&#x6709;&#x4EA4;&#x96C6;&#xFF0C;&#x5E76;&#x96C6;&#xFF0C;&#x5DEE;&#x96C6;&#x7B49;&#x96C6;&#x5408;&#x64CD;&#x4F5C;.</p>
+</blockquote>
+<pre><code class="lang-php">    <span class="hljs-comment">/*set&#x96C6;&#x5408;&#x7C7B;&#x578B;&#xFF1A;&#x8BF4;&#x7684;&#x662F;&#x96C6;&#x5408;&#x548C;&#x6210;&#x5458;*/</span>
+    <span class="hljs-comment">/*&#x96C6;&#x5408;&#x4E2D;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x5143;&#x7D20;*/</span>
+
+    <span class="hljs-comment">#&#x6DFB;&#x52A0;&#x6210;&#x5458;&#x5230;&#x6307;&#x5B9A;&#x96C6;&#x5408;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sadd(&apos;set1&apos;,&apos;zhangsan&apos;);</span>
+    <span class="hljs-comment">// $redis-&gt;sadd(&apos;set2&apos;,&apos;lisi&apos;,&apos;a&apos;,&apos;7&apos;);</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x6210;&#x5458;&#x6570;(&#x4E0D;&#x540C;&#x4E8E;&#x5176;&#x4ED6;&#x7C7B;&#x578B;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;scard(&apos;set1&apos;);</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x662F;&#x5426;&#x662F;&#x96C6;&#x5408;&#x6210;&#x5458;</span>
+    $l = $redis-&gt;sismember(<span class="hljs-string">&apos;set1&apos;</span>,<span class="hljs-string">&apos;lisi&apos;</span>); <span class="hljs-comment">// bool(true)</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x7684;&#x96C6;&#x5408;&#x5168;&#x90E8;&#x6210;&#x5458;(&#x662F;&#x65E0;&#x5E8F;&#x7684;&#xFF0C;&#x548C;&#x6DFB;&#x52A0;&#x987A;&#x5E8F;&#x65E0;&#x5173;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;smembers(&apos;set1&apos;);</span>
+
+    <span class="hljs-comment">#&#x79FB;&#x9664;&#x96C6;&#x5408;&#x4E2D;&#x968F;&#x673A;&#x5143;&#x7D20;&#x5E76;&#x8FD4;&#x56DE;</span>
+    <span class="hljs-comment">#&#x7528;&#x4F5C;&#x6982;&#x7387;&#x62BD;&#x5956;&#x3002;&#x4E0D;&#x53EF;&#x653E;&#x56DE;&#x90A3;&#x79CD;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;spop(&apos;set1&apos;);</span>
+
+    <span class="hljs-comment">#&#x79FB;&#x9664;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x6307;&#x5B9A;&#x6210;&#x5458;</span>
+    <span class="hljs-comment">#&#x533A;&#x522B;&#x4E8E;list&#x7684;&#x662F;&#xFF0C;&#x96C6;&#x5408;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x91CD;&#x590D;&#x6210;&#x5458;</span>
+    <span class="hljs-comment">#&#x6240;&#x4EE5;&#x4E0D;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x5220;&#x9664;&#x6210;&#x5458;&#x4E2A;&#x6570;&#x7684;&#x53C2;&#x6570;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;srem(&apos;set1&apos;,&apos;b&apos;); // int(0)</span>
+
+    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x96C6;&#x5408;&#x4E2D;&#x4E00;&#x4E2A;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x7684;&#x968F;&#x673A;&#x6570;(&#x5E76;&#x672A;&#x79FB;&#x9664;)</span>
+    <span class="hljs-comment">#&#x8BE5;&#x529F;&#x80FD;&#x4E5F;&#x9002;&#x7528;&#x4E8E;&#x62BD;&#x5956;&#x573A;&#x666F;&#x3002;&#x53EF;&#x653E;&#x56DE;&#x7684;&#x62BD;&#x5956;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;srandmember(&apos;set1&apos;,2);</span>
+
+    <span class="hljs-comment">#&#x96C6;&#x5408;&#x6709;&#x4EA4;&#x5E76;&#x8865;</span>
+    <span class="hljs-comment">#&#x4EA4;&#x96C6;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sinter(&apos;set1&apos;,&apos;set2&apos;);</span>
+    <span class="hljs-comment">#&#x5C06;&#x4EA4;&#x96C6;&#x53D6;&#x51FA;&#x653E;&#x5165;&#x65B0;&#x7684;&#x96C6;&#x5408;(&#x6CE8;&#x610F;&#x540E;&#x9762;&#x53C2;&#x6570;&#x4E0D;&#x662F;&#x6570;&#x7EC4;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sinterstore(&apos;set4&apos;,&apos;set1&apos;,&apos;set2&apos;);</span>
+
+    <span class="hljs-comment">#&#x5E76;&#x96C6;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sunion(&apos;set1&apos;,&apos;set2&apos;);</span>
+    <span class="hljs-comment">#&#x5C06;&#x5E76;&#x96C6;&#x53D6;&#x51FA;&#x653E;&#x5165;&#x65B0;&#x7684;&#x96C6;&#x5408;(&#x6CE8;&#x610F;&#x540E;&#x9762;&#x53C2;&#x6570;&#x4E0D;&#x662F;&#x6570;&#x7EC4;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sunionstore(&apos;set5&apos;,&apos;set1&apos;,&apos;set2&apos;);</span>
+
+    <span class="hljs-comment">#&#x8865;&#x96C6;(&#x9664;&#x4E86;&#x76F8;&#x540C;&#x90E8;&#x5206;&#x4EE5;&#x5916;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sdiff(&apos;set1&apos;,&apos;set2&apos;);</span>
+    <span class="hljs-comment">#&#x5C06;&#x8865;&#x96C6;&#x53D6;&#x51FA;&#x653E;&#x5165;&#x65B0;&#x7684;&#x96C6;&#x5408;(&#x6CE8;&#x610F;&#x540E;&#x9762;&#x53C2;&#x6570;&#x4E0D;&#x662F;&#x6570;&#x7EC4;)</span>
+    <span class="hljs-comment">// $l = $redis-&gt;sdiffstore(&apos;set3&apos;,&apos;set1&apos;,&apos;set2&apos;);</span>
+</code></pre>
+<h2 id="zset">zset</h2>
+<blockquote>
+<p>&#x6709;&#x5E8F;&#x96C6;&#x5408;[sorted set]&#x4E5F;&#x4E0D;&#x5141;&#x8BB8;&#x91CD;&#x590D;&#x6210;&#x5458;&#x3002;
+&#x6BD4;&#x4E4B;&#x96C6;&#x5408;&#xFF0C;&#x5185;&#x90E8;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x4E2A;&#x5206;&#x6570;&#x3002;&#x4F46;&#x5206;&#x6570;&#x662F;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x7684;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-php">    <span class="hljs-comment">/*&#x6709;&#x5E8F;&#x96C6;&#x5408;sorted set &#x8BF4;&#x7684;&#x662F;&#x96C6;&#x5408;&#xFF0C;&#x6210;&#x5458;&#x548C;&#x5206;&#x6570;*/</span>
+
+    <span class="hljs-comment">#&#x5411;zset&#x6DFB;&#x52A0;&#x6210;&#x5458;</span>
+    <span class="hljs-comment">#&#x533A;&#x522B;&#x4E8E;set&#x3002;&#x8FD9;&#x91CC;&#x6709;&#x5206;&#x6570;&#x8BBE;&#x7F6E;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zadd(&apos;zset1&apos;,800,&apos;89&apos;);</span>
+    <span class="hljs-comment">#&#x6279;&#x91CF;&#x6DFB;&#x52A0;&#x3002;&#x8FD9;&#x91CC;&#x540C;set&#x3002;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6570;&#x7EC4;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zadd(&apos;zset1&apos;,88,&apos;lisi&apos;,99,&apos;wangwu&apos;,100,&apos;lulu&apos;);</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x6210;&#x5458;&#x7684;&#x4E2A;&#x6570;card</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zcard(&apos;zset1&apos;);</span>
+
+    <span class="hljs-comment">#&#x6709;&#x6210;&#x5458;&#x5206;&#x6570;&#x589E;&#x91CF;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zincrby(&apos;zset1&apos;,80,&apos;89&apos;); // float(160)</span>
+
+    <span class="hljs-comment">#&#x6307;&#x5B9A;&#x533A;&#x95F4;&#x5206;&#x6570;&#x7684;&#x6210;&#x5458;&#x6570;&#x91CF;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zcount(&apos;zset1&apos;,0,100);</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x5230;zset&#x7684;&#x5168;&#x90E8;&#x6210;&#x5458;&#x3002;&#x6216;&#x8005;&#x6307;&#x5B9A;&#x4E0B;&#x6807;&#x533A;&#x95F4;&#x6210;&#x5458;</span>
+    <span class="hljs-comment">#&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4EE5;&#x6210;&#x5458;&#x4E3A;&#x952E;&#xFF0C;&#x5206;&#x6570;&#x4E3A;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zrange(&apos;zset1&apos;,0,2,&apos;withscores&apos;);</span>
+
+    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x533A;&#x95F4;&#x6210;&#x5458;&#x3002;&#x901A;&#x8FC7;&#x7D22;&#x5F15;&#xFF0C;&#x5206;&#x6570;&#x9AD8;&#x5230;&#x4F4E;</span>
+    <span class="hljs-comment">#&#x76F8;&#x5BF9;&#x4E8E;zrange()&#x3002;&#x8FD9;&#x4E2A;&#x6709;&#x5206;&#x6570;&#x7684;&#x6392;&#x5E8F;&#x529F;&#x80FD;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zrevrange(&apos;zset1&apos;,0,2,&apos;withscores&apos;);</span>
+
+    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x533A;&#x95F4;&#x6210;&#x5458;&#x3002;&#x901A;&#x8FC7;&#x5206;&#x6570;&#xFF0C;&#x5206;&#x6570;&#x9AD8;&#x5230;&#x4F4E;</span>
+    <span class="hljs-comment">#&#x9700;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8FD9;&#x91CC;2.3&#x53C2;&#x6570;&#x662F;&#xFF1A;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x6700;&#x5C0F;&#x503C;&#x3002;</span>
+    <span class="hljs-comment">#&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x7D22;&#x5F15;&#x6570;&#x7EC4;&#x3002;&#x503C;&#x662F;&#x6210;&#x5458;&#x3002;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zrevrangeByscore(&apos;zset1&apos;,1000,0);</span>
+
+    <span class="hljs-comment">#&#x901A;&#x8FC7;&#x5206;&#x6570;&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x533A;&#x95F4;&#x6210;&#x5458;(&#x95ED;&#x533A;&#x95F4;)</span>
+    <span class="hljs-comment">#&#x8FD9;&#x91CC;&#x7684;2.3&#x53C2;&#x6570;&#x662F;&#x6700;&#x5C0F;&#x503C;&#xFF0C;&#x6700;&#x5927;&#x503C;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zrangebyscore(&apos;zset1&apos;,0,1000);</span>
+
+    <span class="hljs-comment">#&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x6210;&#x5458;&#x7684;&#x7D22;&#x5F15;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zrank(&apos;zset1&apos;,&apos;lulu&apos;);</span>
+
+    <span class="hljs-comment">#&#x79FB;&#x9664;&#x6307;&#x5B9A;&#x5143;&#x7D20;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zrem(&apos;zset1&apos;,&apos;wangwu&apos;);</span>
+    <span class="hljs-comment">#&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x4E0B;&#x6807;&#x533A;&#x95F4;&#x79FB;&#x9664;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zremrangebyrank(&apos;zset1&apos;,0,1);</span>
+    <span class="hljs-comment">#&#x6839;&#x636E;&#x6307;&#x5B9A;&#x7684;&#x5206;&#x6570;&#x533A;&#x95F4;&#x79FB;&#x9664;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zremrangebyscore(&apos;zset1&apos;,0,10);</span>
+
+    <span class="hljs-comment">#&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x6210;&#x5458;&#x5206;&#x6570;</span>
+    <span class="hljs-comment">// $l = $redis-&gt;zscore(&apos;zset1&apos;,&apos;lulu&apos;);</span>
+
+    <span class="hljs-comment">#&#x5176;&#x4ED6;&#x7684;&#x4EA4;&#x5E76;&#x8865;&#x540C;set&#x3002;</span>
+</code></pre>
+<h3 id="&#x516C;&#x7528;&#x65B9;&#x6CD5;">&#x516C;&#x7528;&#x65B9;&#x6CD5;</h3>
+<pre><code class="lang-php">    <span class="hljs-comment">#&#x5F88;&#x91CD;&#x8981;&#x7684;&#x8FC7;&#x671F;&#x8BBE;&#x7F6E;&#x67E5;&#x770B;&#x7B49;&#x3002;</span>
+    $l = $redis-&gt;expire(<span class="hljs-string">&apos;age&apos;</span>,<span class="hljs-number">10</span>); <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x8FC7;&#x671F;10&#x79D2;&#x3002;</span>
+    $l = $redis-&gt;ttl(<span class="hljs-string">&apos;name&apos;</span>); <span class="hljs-comment">// &#x67E5;&#x770B;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;-1&#x4E3A;&#x6301;&#x4E45;&#x5316;&#x3002;</span>
+    $redis-&gt;persist(<span class="hljs-string">&apos;name&apos;</span>); <span class="hljs-comment">// &#x6E05;&#x9664;key&#x7684;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;&#x6210;&#x4E3A;&#x6301;&#x4E45;&#x5316;&#x3002;</span>
+
+    <span class="hljs-comment">#&#x8FD8;&#x6709;&#x5220;&#x9664;&#x540D;&#x3002;&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740;&#x4E0D;&#x540C;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x53D6;&#x76F8;&#x540C;&#x7684;&#x540D;&#x513F;</span>
+    $redis-&gt;delete();
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 简介">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="construction.html#string" class="navigation navigation-next " aria-label="Next page: 字符串">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"redis数据结构","level":"1.2","depth":1,"next":{"title":"字符串","level":"1.2.1","depth":2,"anchor":"#string","path":"lib/construction.md","ref":"lib/construction.md#string","articles":[]},"previous":{"title":"简介","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"故里","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"redis的简单认知","gitbook":"*","description":"故里的学习进阶之路"},"file":{"path":"lib/construction.md","mtime":"2020-06-09T07:39:42.846Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-09T09:06:30.003Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

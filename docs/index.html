@@ -1,0 +1,479 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>简介 · redis的简单认知</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="故里">
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="lib/construction.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html">
+            
+                    
+                    redis数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html#string">
+            
+                    
+                    字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html#hash">
+            
+                    
+                    哈希
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html#list">
+            
+                    
+                    列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html#set">
+            
+                    
+                    集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html#zset">
+            
+                    
+                    有序集合
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="lib/construction.html">
+            
+                <a href="lib/construction.html#公用方法">
+            
+                    
+                    公用方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="lib/scenes.html">
+            
+                <a href="lib/scenes.html">
+            
+                    
+                    redis使用场景
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="lib/scenes.md/消息队列">
+            
+                <span>
+            
+                    
+                    消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="lib/scenes.md/商品维度计数">
+            
+                <span>
+            
+                    
+                    商品的维度计数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="lib/scenes.md/用户维度计数">
+            
+                <span>
+            
+                    
+                    用户维度计数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="lib/scenes.md/存储社交关系">
+            
+                <span>
+            
+                    
+                    存储社交关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="lib/scenes.md/缓存">
+            
+                <span>
+            
+                    
+                    缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="lib/scenes.md/最新列表&排行榜">
+            
+                <span>
+            
+                    
+                    最新列表&排行榜
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="lib/scenes.md/消息通知">
+            
+                <span>
+            
+                    
+                    消息通知
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="lib/scenes.md/数据统计">
+            
+                <span>
+            
+                    
+                    数据统计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="lib/scenes.md/防止缓存击穿">
+            
+                <span>
+            
+                    
+                    防止缓存击穿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="lib/scenes.md/商品秒杀">
+            
+                <span>
+            
+                    
+                    商品秒杀
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >简介</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="redis&#x7B80;&#x4ECB;">REDIS&#x7B80;&#x4ECB;</h1>
+<pre><code>redis&#x529F;&#x80FD;&#x5F3A;&#x5927;&#xFF0C;&#x800C;&#x4E14;&#x7279;&#x6027;&#x9002;&#x7528;&#x4E8E;&#x591A;&#x573A;&#x666F;&#x3002;
+
+redis&#x8FD0;&#x884C;&#x901F;&#x5EA6;&#x5FEB;&#x3002;&#x56E0;&#x4E3A;&#x662F;&#x5185;&#x5B58;&#x64CD;&#x4F5C;&#x3002;&#x5E95;&#x5C42;C&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x3002;&#x800C;&#x4E14;&#x5355;&#x7EBF;&#x7A0B;&#x3002;
+
+&#x8BBF;&#x95EE;&#x901F;&#x5EA6;&#xFF1A;&#x5BC4;&#x5B58;&#x5668;&gt;1&#x7EA7;&#x7F13;&#x5B58;&gt;2&#x7EA7;&#x7F13;&#x5B58;&gt;&#x5185;&#x5B58;&gt;&#x672C;&#x5730;&#x78C1;&#x76D8;&gt;&#x8FDC;&#x7A0B;&#x78C1;&#x76D8;&#x3002;
+
+redis&#x652F;&#x6301;&#x5F02;&#x6B65;&#x7684;&#x6570;&#x636E;&#x66F4;&#x65B0;&#x5230;&#x78C1;&#x76D8;&#x4E0A;&#x3002;&#x65AD;&#x7535;&#x4E5F;&#x53EF;&#x4EE5;&#x6062;&#x590D;&#x6570;&#x636E;&#x3002;
+
+redis&#x652F;&#x6301;&#x591A;&#x79CD;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3002;&#x652F;&#x6301;&#x9AD8;&#x53EF;&#x7528;&#x548C;&#x5206;&#x5E03;&#x5F0F;&#x3002;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="lib/construction.html" class="navigation navigation-next navigation-unique" aria-label="Next page: redis数据结构">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"简介","level":"1.1","depth":1,"next":{"title":"redis数据结构","level":"1.2","depth":1,"path":"lib/construction.md","ref":"lib/construction.md","articles":[{"title":"字符串","level":"1.2.1","depth":2,"anchor":"#string","path":"lib/construction.md","ref":"lib/construction.md#string","articles":[]},{"title":"哈希","level":"1.2.2","depth":2,"anchor":"#hash","path":"lib/construction.md","ref":"lib/construction.md#hash","articles":[]},{"title":"列表","level":"1.2.3","depth":2,"anchor":"#list","path":"lib/construction.md","ref":"lib/construction.md#list","articles":[]},{"title":"集合","level":"1.2.4","depth":2,"anchor":"#set","path":"lib/construction.md","ref":"lib/construction.md#set","articles":[]},{"title":"有序集合","level":"1.2.5","depth":2,"anchor":"#zset","path":"lib/construction.md","ref":"lib/construction.md#zset","articles":[]},{"title":"公用方法","level":"1.2.6","depth":2,"anchor":"#公用方法","path":"lib/construction.md","ref":"lib/construction.md#公用方法","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"故里","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"redis的简单认知","gitbook":"*","description":"故里的学习进阶之路"},"file":{"path":"README.md","mtime":"2020-06-09T08:00:17.372Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-09T09:06:30.003Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
